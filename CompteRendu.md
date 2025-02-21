@@ -486,15 +486,17 @@ RTB de mon VPC2 :
 RTB de mon VPC1 Subnet Public :
 ![alt text](image-84.png)
 
-On créé une autre instance : 
+---
+On créé une autre instance EC2 que l'on met dans notre second VPC : 
 ![alt text](image-85.png)
-
-![alt text](image-86.png)
 
 On arrive bien à se connecter à l'instance présente dans le VPC2, depuis l'instance présente dans le subnet publique du VPC1.
 
-On teste de ping (on a autorisé le protocole ICMP sur mon NSG) : 
+![alt text](image-86.png)
+
+On teste le ping (on a autorisé le protocole ICMP sur mon NSG) : 
 ![alt text](image-87.png)
+On a bien accès à Internet.
 
 # Conclusion
-Ce projet a permis de mettre en oeuvre tout ce qu'on avait pu voir lors des différents cours/TP. Celui-ci nous a aussi permis de réellement pratiquer en CloudShell, avec les différentes commandes que notre projet impliquaient. Néanmoins, il reste énormement de services et d'éléments à découvrir/étudier au sein d'AWS !
+Ce projet a permis de mettre en oeuvre tout ce qu'on avait pu voir lors des différents cours/TP. Celui-ci nous a aussi permis de réellement pratiquer, au travers de nombreux services. Néanmoins, il reste énormement de services et d'éléments à découvrir/étudier au sein d'AWS !
