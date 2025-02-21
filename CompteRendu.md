@@ -1,3 +1,4 @@
+_E4 - CACCIATORE Vincent - Metz_
 # Modélisation
 
 Afin de réaliser notre projet de manière efficace, nous avons tout d'abord mis au point cette modélisation qui nous permet d'obtenir une vue d'ensemble de l'architecture à établir :
