@@ -25,6 +25,7 @@ L'utilisation du wizard est particulièrement pratique, surtout lorsque l'on tra
 
 
 ![alt text](image-20.png)
+
 ![alt text](image-23.png)
 On peut créer notre VPC.
 
