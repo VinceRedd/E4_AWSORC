@@ -473,6 +473,7 @@ On créé le sous-réseau :
 
 On créé la table de routage :
 ![alt text](image-79.png)
+
 On associe notre subnet à notre RTB :
 ![alt text](image-80.png)
 
