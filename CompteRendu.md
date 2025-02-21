@@ -499,7 +499,9 @@ On arrive bien à se connecter à l'instance présente dans le VPC2, depuis l'in
 ![alt text](image-86.png)
 
 On teste le ping (on a autorisé le protocole ICMP sur mon NSG) : 
+
 ![alt text](image-87.png)
+
 On a bien accès à Internet.
 
 # Conclusion
