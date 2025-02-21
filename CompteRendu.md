@@ -114,6 +114,7 @@ runcmd:
 On l'insère tout en bas de notre page de création d'instance EC2 :
 
 ![alt text](image-25.png)
+
 Après quelques temps, notre instance est bien créée et démarrée.
 
 ## ⚡ SSH
@@ -366,7 +367,7 @@ On se rend donc sur notre application pour en créer un :
 
 ![alt text](image-39.png)
 
-Notre user est bien créé.
+Notre user est bien créé :
 ![alt text](image-40.png)
 
 On affiche encore une fois l'ensemble des users créés : 
@@ -403,7 +404,9 @@ Enfin, depuis notre première instance (publique), on se connecte à la seconde 
 ![alt text](image-52.png)
 
 On arrive bien à ping vers les serveurs de Google depuis notre instance en s'ayant connectée via l'IP privée au travers de notre première instance "publique" :
+
 ![alt text](image-53.png)
+
 ![alt text](image-54.png)
 
 # 📦 Bucket
