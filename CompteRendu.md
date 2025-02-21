@@ -2,7 +2,7 @@
 
 Afin de réaliser notre projet de manière efficace, nous avons tout d'abord mis au point cette modélisation qui nous permet d'obtenir une vue d'ensemble de l'architecture à établir :
 
-![Alt text](ModélisationInfra.jpg)
+![alt text](image-88.png)
 
 _En cas de difficulté, vous pouvez ouvrir les fichiers images directement, celles-ci sont présentes dans le répertoire._
 
@@ -320,6 +320,7 @@ On y a bien accès depuis l'extérieur.
 ## 🗄 Base de données (RDS)
 
 On se rend dans le service RDS, puis on créé notre base de données MySQL en suivant cette configuration : 
+
 ![alt text](image-30.png)
 
 On se met bien sur l'offre gratuite :
@@ -332,21 +333,27 @@ On active et définit la mise à l'échelle :
 ![alt text](image-33.png)
 
 On met en place toute notre connectivité.
+
 On créé un NSG dédié et on sélectionne le bon VPC (créé précédemment).
 ![alt text](image-35.png)
 
 On configure le nom de la DB pour que AWS la créée et on active les sauvegardes automatiques : 
+
 ![alt text](image-36.png)
 
 On peut désormais la créer.
 
+
 On configure par la suite une connexion EC2 vers notre instance :
 ![alt text](image-38.png)
 
+
+---
 On peut désormais se connecter en SSH sur notre DB :
 ```
 mysql -h dbcacciatoretpfinal.csdwaigwo7xn.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
 ```
+
 ![alt text](image-42.png)
 ![alt text](image-41.png)
 
@@ -379,28 +386,34 @@ Notre user "vincetpfinalAWS" est bien présent.
 
 On créé une seconde instance Ubuntu dans notre VPC dans le privé :
 
-E4_CACCIATORE_ProjetFinal_ServTestPrive
+_E4_CACCIATORE_ProjetFinal_ServTestPrive_
 
 ![alt text](image-48.png)
 
+On créé par la suite notre passerelle NAT.
+Elle permet aux instances d’un sous-réseau privé d’accéder à Internet tout en empêchant les connexions entrantes. Elle est utile pour télécharger des mises à jour ou envoyer des requêtes sans exposer directement les instances à Internet.
 
 ![alt text](image-49.png)
+
+Enfin, depuis notre première instance (publique), on se connecte à la seconde via son ip privée :
 ![alt text](image-51.png)
 ![alt text](image-52.png)
+
+On arrive bien à ping vers les serveurs de Google depuis notre instance en s'ayant connectée via l'IP privée au travers de notre première instance "publique" :
 ![alt text](image-53.png)
 ![alt text](image-54.png)
 
-On arrive bien à ping vers les serveurs de Google depuis notre instance en s'ayant connectée via l'IP privée au travers de notre première instance "publique".
+# 📦 Bucket
 
-# Bucket
+Un **bucket S3** est un conteneur de stockage dans **Amazon S3**, permettant de **stocker et organiser des fichiers** (objets) dans le cloud. Il est utilisé pour **héberger des données** comme des images, vidéos, logs ou sauvegardes, avec une **haute disponibilité** et une **sécurité renforcée**.  
 
+On créé notre compartiment en suivant cette configuration :
 
 ![alt text](image-57.png)
 ![alt text](image-56.png)
 
 On se rend dans l'onglet "Autorisations" de notre compartiment :
 ![alt text](image-59.png)
-
 
 ![alt text](image-60.png)
 
@@ -409,7 +422,9 @@ Tout en bas de "Propriétés" :
 
 ![alt text](image-66.png)
 
+On glisse notre site web statique :
 ![alt text](image-67.png)
+
 On a bien notre site web statique :
 ![alt text](image-68.png)
 
@@ -420,15 +435,21 @@ On a bien accès à notre site depuis Internet :
 ![alt text](image-70.png)
 
 
-## Sauvegardes
+## 🖴 Sauvegardes
 
-### Pour l'EC2
+### EC2
+
+Dans le menu de l'instance EC2 :
+
 ![alt text](image-71.png)
 
 ![alt text](image-72.png)
 
-### Pour la DB
+On vient de créer une snapshot de notre instance.
 
+### DataBase
+
+De la même façon, on se rend dans l'interface RDS :
 ![alt text](image-73.png)
 
 
@@ -441,7 +462,7 @@ On a bien nos snapshots de notre DB et notre application :
 
 # Partie 2
 
-On créé le VPC :
+On créé le VPC avec la bonne configuration :
 ![alt text](image-77.png)
 
 On créé le sous-réseau : 
@@ -451,6 +472,10 @@ On créé la table de routage :
 ![alt text](image-79.png)
 On associe notre subnet à notre RTB :
 ![alt text](image-80.png)
+
+On met en place ensuite le peering entre nos deux VPCs.
+Le **peering** permet de **connecter directement** deux réseaux, comme **deux VPC sur AWS**, sans passer par Internet.
+Idéal pour **interconnecter** des services tout en gardant un **trafic privé** et **optimisé**.
 
 ![alt text](image-81.png)
 ![alt text](image-82.png)
@@ -466,9 +491,10 @@ On créé une autre instance :
 
 ![alt text](image-86.png)
 
+On arrive bien à se connecter à l'instance présente dans le VPC2, depuis l'instance présente dans le subnet publique du VPC1.
 
-
-
+On teste de ping (on a autorisé le protocole ICMP sur mon NSG) : 
+![alt text](image-87.png)
 
 # Conclusion
 Ce projet a permis de mettre en oeuvre tout ce qu'on avait pu voir lors des différents cours/TP. Celui-ci nous a aussi permis de réellement pratiquer en CloudShell, avec les différentes commandes que notre projet impliquaient. Néanmoins, il reste énormement de services et d'éléments à découvrir/étudier au sein d'AWS !
