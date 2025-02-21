@@ -504,5 +504,33 @@ On teste le ping (on a autorisé le protocole ICMP sur mon NSG) :
 
 On a bien accès à Internet.
 
-# Conclusion
-Ce projet a permis de mettre en oeuvre tout ce qu'on avait pu voir lors des différents cours/TP. Celui-ci nous a aussi permis de réellement pratiquer, au travers de nombreux services. Néanmoins, il reste énormement de services et d'éléments à découvrir/étudier au sein d'AWS !
+### 📌 **Conclusion
+
+Dans le cadre de ce projet, nous avons mis en place une **infrastructure cloud robuste et sécurisée** sur **AWS**, en respectant les exigences du client tout en optimisant les coûts et la scalabilité.  
+
+---
+
+### 🔹 **Partie 1 : Déploiement de l'environnement initial**  
+Nous avons construit un **Virtual Private Cloud (VPC)** avec :  
+✔️ **Un sous-réseau public** hébergeant une **instance EC2** pour l’application web.  
+✔️ **Un sous-réseau privé** contenant un **serveur de test** non accessible directement depuis Internet.  
+✔️ Une **base de données RDS** sécurisée et scalable, connectée à l’application.  
+✔️ Un **bucket S3** pour l’hébergement **statique des fichiers**.  
+✔️ Une **passerelle NAT** permettant au serveur de test d’accéder à Internet sans être exposé.  
+✔️ Des **sauvegardes automatisées** (snapshots EC2 & RDS) pour assurer la résilience du système.  
+
+Le déploiement de l’application s’est fait via **Docker** et **Nginx**, permettant une **gestion efficace des conteneurs** et une meilleure modularité. La connexion entre l’application et la base de données a été vérifiée via des tests fonctionnels, garantissant le bon échange des données.  
+
+---
+
+### 🔹 **Partie 2 : Ajout d’un second environnement pour l’IA**  
+Le client souhaitant scinder ses environnements, nous avons mis en place :  
+✔️ **Un deuxième VPC**, isolé du premier, contenant un serveur pour l’équipe IA.  
+✔️ **Un peering entre les VPCs** pour permettre la communication sécurisée entre les deux environnements.  
+✔️ Une gestion des accès et des règles de routage optimisées, garantissant un **trafic sécurisé** et un accès à Internet sans exposition.  
+
+---
+
+### 🚀 **Bilan et perspectives**  
+
+Avec cette architecture, l’entreprise dispose d’un **environnement de développement performant**, prêt à évoluer vers un **déploiement en production sécurisé et extensible**. 🚀🔒
