@@ -504,7 +504,7 @@ On teste le ping (on a autorisé le protocole ICMP sur mon NSG) :
 
 On a bien accès à Internet.
 
-### 📌 Conclusion
+## 📌 Conclusion
 
 Dans le cadre de ce projet, nous avons mis en place une **infrastructure cloud robuste et sécurisée** sur **AWS**, en respectant les exigences du client tout en optimisant les coûts et la scalabilité.  
 
